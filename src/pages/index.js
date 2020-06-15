@@ -53,7 +53,7 @@ render={data => (
                   data-item-price={product.price}
                   data-item-image={product.image.url}
                   data-item-name={product.name}
-                  data-item-url={`https://eager-bhaskara-d6796c.netlify.app/`}
+                  data-item-url={`https://elegant-john-bathrooms.netlify.app/`}
                 >
                   Buy now
                 </button>
