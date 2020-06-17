@@ -1,43 +1,20 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
-import Link from 'gatsby-link'
-
-import '../style/index.scss'
+import Header from '../components/header'
+import '../style/index.sass'
 
 const Layout = ({ children, site }) => (
   <div>
     <Helmet title="Elegant John Shop" />
     <div className="Container">
-      <div className="Header">
-        <div className="Wrap" >
-          <div className="Header__body">
-            <h1 className="Header__title">
-              <Link data-text={site.siteMetadata.siteName} to="/">
-                {site.siteMetadata.siteName}
-              </Link>
-            </h1>
-            <div className="Header__summary snipcart-summary snipcart-checkout">
-              <div className="Header__summary__title">
-                🛍 MY CART 🛍
-              </div>
-              <div className="Header__summary__line">
-                Number of items: <span className="snipcart-total-items"></span>
-              </div>
-              <div className="Header__summary__line">
-                Total price: <span className="snipcart-total-price"></span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <Header site={site} />
       <div className="Wrap" >
         {children}
       </div>
       <div className="Wrap" >
         <div className="Footer">
-          This website is just an example project to demonstrate how you can 
-          integrate <a href="https://www.gatsbyjs.org/">Gatsby</a>, <a href="https://snipcart.com/">Snipcart</a> and <a href="https://www.datocms.com">DatoCMS</a>.
+          Elegant John Bathrooms 2020 &copy;
         </div>
       </div>
     </div>

@@ -1,0 +1,66 @@
+.Product 
+  text-decoration: none
+  color: black
+  cursor: pointer
+
+
+.Product__image 
+  border: 1px solid #ccc
+  border-radius: 5px
+  padding: 7px
+  width: 100%
+  position: relative
+  margin-bottom: 25px
+  box-shadow: 6px 6px 10px rgba(0,0,0,.25)
+  transition: .5s
+
+  img 
+    width: 100%
+    display: block
+  
+
+
+.Product:hover .Product__image 
+  transform: scale(1.03)
+  
+.Product__details 
+  display: flex
+  flex-direction: column
+  align-items: flex-start
+  & > *
+    margin-bottom: 1em
+
+
+.Product__name 
+  font-weight: bold
+  padding-right: 20px
+  color: #555
+
+
+.Product__price 
+  font-size: 0.8em
+  font-weight: normal
+  color: #000
+  &:after
+    content: '.00'
+
+
+.Product__buy 
+  flex: 1
+  text-align: center
+  width: 100%
+  text-transform: uppercase
+  background: #222
+  padding: 1em
+  color: white
+  position: relative
+  font-weight: bold
+  transition: .5s
+  border: none
+
+
+  &:hover 
+    background: #555
+
+    
+  
