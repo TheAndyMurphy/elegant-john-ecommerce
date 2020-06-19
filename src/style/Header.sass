@@ -10,39 +10,38 @@
   display: grid
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr))
 
-
-.Header__title 
+.Header__logo 
   flex: 1
-  padding: 20px 0
   font-style: italic
-
   a 
-    font-size: 6em
-    font-weight: bold
-    position: relative
-    text-decoration: none
+
     display: flex
     align-items: center
-    justify-content: flex-tart
-    padding: 2px
+    justify-content: flex-start
     width: 300px
     max-width: 100%
 
     img 
       max-width: 100%
     
+.Header__links
+  display: flex
+  flex-direction: row
+  justify-content: flex-end
+  align-items: center
+  & > *
+    margin-left: 10px
+  a 
+    color: #fff
+    text-decoration: none
+    padding: .5em 1em
+    font-family: Montserrat, sans-serif
+    font-weight: 400
+
 .Header__summary 
   text-decoration: none
   color: white
-  text-align: center
   cursor: pointer
-
-.Header__summary__line 
-  font-size: 0.8em
-  text-align: right
-  padding: 10px
-
-.Header__summary__title
   display: flex
   padding: 10px
   justify-content: flex-end
@@ -55,6 +54,10 @@
   border-radius: 50%
   background: darkred
   transition: .5s
+  display: flex
+  align-items: center
+  justify-content: center
+  margin-left: 5px
 
 .Header__summary
   &:hover
