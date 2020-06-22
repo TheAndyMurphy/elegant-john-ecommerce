@@ -1,6 +1,7 @@
 import React from 'react';
 import Layout from "../layouts/index"
 import Img from 'gatsby-image'
+import { Link } from 'gatsby'
 
 const Shop = ({ data }) => (
   <Layout site={data.site}>
@@ -10,7 +11,7 @@ const Shop = ({ data }) => (
           data.products.edges.map(({ node: product }) => (
             <div className="Catalogue__item" key={product.id}>
               <div
-                className="Product snipcart-add-item"
+                className="Product"
               >
                 <div className="Product__image">
                   <Img sizes={product.productImage.sizes} />
@@ -21,17 +22,7 @@ const Shop = ({ data }) => (
                       €{product.productPrice}
                     </div>
                   </div>
-                  <button 
-                    className="Product__buy Product snipcart-add-item"
-                    data-item-id={product.id}
-                    data-item-price={product.productPrice}
-                    data-item-image={product.productImage.url}
-                    data-item-name={product.productName}
-                    data-item-url={`/shop/`}
-                    data-item-has-taxes-included="true"
-                  >
-                    Buy now
-                  </button>
+                  <Link to={`/${product.productCategory.category}/${product.productLink}`} >Learn More</Link>
                 </div>
               </div>
             </div>
@@ -57,6 +48,10 @@ query CatalogueQuery {
             sizes(maxWidth: 300, imgixParams: { fm: "jpg" }) {
               ...GatsbyDatoCmsSizes
             }
+          }
+          productLink
+          productCategory{
+            category
           }
         }
       }
