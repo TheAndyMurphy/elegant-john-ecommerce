@@ -1,0 +1,27 @@
+$primary: #002333
+$secondary: #bdad66
+$muted: #2f7291
+$light: #e4f7ff
+$dark: #0a0c0e
+
+
+
+@mixin mobile-only
+    @media (max-width: 599px)
+        @content
+
+@mixin tablet-portrait
+    @media (min-width: 600px)
+        @content
+
+@mixin tablet-landscape
+    @media (min-width: 900px)
+        @content
+
+@mixin desktop
+    @media (min-width: 1200px)
+        @content
+
+@mixin monitor
+    @media (min-width: 1800px)
+        @content

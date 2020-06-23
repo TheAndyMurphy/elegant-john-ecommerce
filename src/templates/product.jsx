@@ -2,7 +2,7 @@ import React from 'react'
 import Layout from "../layouts/index"
 
 const Product = ({path, pageContext}) => (
-    <Layout>
+    <Layout navBg={true}>
         <div className="Wrap Main">
             <div className="Catalogue__item" key={pageContext.id}>
               <div
@@ -12,7 +12,7 @@ const Product = ({path, pageContext}) => (
                   <img src={pageContext.productImage} />
                 </div> <div className="Product__details">
                   <div className="Product__name">
-                    {pageContext.productName}
+                    <h3>{pageContext.productName}</h3>
                     <div className="Product__price">
                       €{pageContext.productPrice}
                     </div>

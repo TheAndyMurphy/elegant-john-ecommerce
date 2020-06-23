@@ -5,9 +5,9 @@ import { Link, graphql } from 'gatsby'
 const Products = ({ pageContext, data }) => {
   const { edges } = data.allDatoCmsProduct
   return (
-    <Layout site={data.site}>
+    <Layout navBg={true}>
         <div className="Wrap Main">
-            <h1>sup</h1>
+            <h1>{pageContext.category}</h1>
             <div className="Catalogue">
                 {
                     edges.map(({ node: product }) => (
@@ -24,7 +24,7 @@ const Products = ({ pageContext, data }) => {
                                 €{product.productPrice}
                                 </div>
                             </div>
-                            <Link to={`/products/${product.productLink}`} >Learn More</Link>
+                            <Link to={`/${product.productCategory.category}/${product.productLink}`} >Learn More</Link>
                             </div>
                         </div>
                         </div>

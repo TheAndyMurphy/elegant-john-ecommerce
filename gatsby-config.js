@@ -12,15 +12,15 @@ module.exports = {
       options: {
         fonts: [
           {
-            family: `Playfair Display`,
-            variants: [`600`, `900`]
-          },
-          {
             family: `Montserrat`,
             variants: [`400`, `700`]
           },
+          {
+            family: `Playfair Display`,
+            variants: [`600`, `900`]
+          },
         ],
-      },
+      }
     },
     {
       resolve: `gatsby-source-datocms`,

@@ -4,7 +4,7 @@ import Img from 'gatsby-image'
 import { Link } from 'gatsby'
 
 const Shop = ({ data }) => (
-  <Layout site={data.site}>
+  <Layout site={data.site} navBg={true}>
     <div className="Wrap Main">
       <div className="Catalogue">
         {
