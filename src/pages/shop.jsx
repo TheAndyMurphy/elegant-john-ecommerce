@@ -1,11 +1,10 @@
 import React from 'react';
 import Layout from "../layouts/index"
 import ProductCardDeck from '../components/product-card-deck'
-import SNIPCART_API_TOKEN from '../../.env'
 
 const Shop = ({ data }) => {
   const {edges} = data.products
-  const secret = SNIPCART_API_TOKEN
+  const secret = process.env.SNIPCART_API_TOKEN
   const checkOrders = async () => {
     const request = await fetch('https://app.snipcart.com/api/orders', {
         headers: {
