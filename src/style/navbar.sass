@@ -19,6 +19,11 @@
     position: fixed
     top: 0
     z-index: 5
+    transition: .5s
+    &.scrolled
+        background: $primary
+        .navbar__container
+            border-bottom: none
 
     &__container
         width: 1200px
@@ -111,6 +116,7 @@
                     transform: rotate(-45deg)
                     left: 2px
                     top: 18px
+
     &__links
         grid-area: links
         opacity: 0
@@ -118,10 +124,16 @@
         top: 0
         left: 0
         min-height: 100vh
+        height: 100%
         width: 100%
-        z-index: -1
+        z-index: -6
         transition: .5s
+        visibility: hidden
+
+
         &.toggled
+            visibility: visible
+            z-index: -1
             opacity: 1
             background: rgba(0,0,0,.5)
             backdrop-filter: blur(5px)
@@ -130,21 +142,79 @@
         &__container
             display: flex
             flex-direction: column
+            align-items: flex-start
             max-width: 95%
             margin: 0 auto
+            margin-top: 100px
+            padding-bottom: 120px
+            list-style: none
+            height: 100%
+            overflow-y: scroll
+            li 
+                list-style: none
+                display: flex
+                align-items: center
+                height: 60px
+                &.dropdown
+                    position: relative
+                    overflow: visible
+                    height: auto
+                    display: flex
+                    flex-direction: column
+                    align-items: flex-start
+                    height: auto
+                    .dropdown__content
+                        flex-direction: column
+                        display: none
+                        opacity: 0
 
-            a 
-                position: relative
-                width: 100%
-                padding: 12px
-                color: #ffffff
-                text-decoration: none
-                z-index: 5
-                &:first-child
-                    margin-top: 100px
+                        &.toggled
+                            display: flex
+                            opacity: 1
+                            a 
+                                position: relative
+                                width: 100%
+                                padding: 12px
+                                color: #ffffff
+                                text-decoration: none
+                                z-index: 5
+                                text-transform: uppercase
+                                text-align: left
+                                cursor: pointer
+                                font-size: 14px
+                                font-family: Montserrat, sans-serif
+                                margin-left: 16px
+                                &::before
+                                    content: '- '
+                a, button
+                    position: relative
+                    width: 100%
+                    padding: 12px
+                    color: #ddd
+                    text-decoration: none
+                    z-index: 5
+                    text-transform: uppercase
+                    text-align: left
+                    cursor: pointer
+                    font-size: 16px
+                    font-family: Montserrat, sans-serif
+                    transition: .25s
+                    &:hover 
+                        color: #fff
+
+                button
+                    outline: none
+                    border: none
+                    background: none
+                    display: flex
+                    align-items: center
+                    svg 
+                        margin-left: 8px
+                    
     &__cart
         grid-area: cart
         position: relative
+        cursor: pointer
         svg
             margin-top: 5px
             path 
@@ -169,6 +239,13 @@
             opacity: 1
             &:empty
                 opacity: 0
+.snipcart-total-price
+    display: none
+    font-family: Montserrat, sans-serif
+    font-weight: 600
+    font-size: 14px
+    &:empty
+        opacity: 0
 
 @media (max-width: 340px)
     .navbar
@@ -176,6 +253,8 @@
             img 
                 max-height: 40px
 @include tablet-landscape
+    .nav-background
+        height: 100px
     .navbar
         height: 100px
         &__container
@@ -184,12 +263,11 @@
             img 
                 height: 70px
 @include desktop
-    .nav-background
-        height: 100px
     .navbar
+        overflow: visible
         &__container
             grid-template-areas: 'logo links cart'
-            grid-template-columns: 300px 1fr 30px
+            grid-template-columns: 300px 1fr 40px
             grid-gap: 2em
         &__burger
             display: none
@@ -200,13 +278,52 @@
             min-height: 0
             opacity: 1
             z-index: 5
-            a 
-                margin-right: 1.5em
-                &:first-child
-                    margin-top: 0
-                &:last-child
-                    margin-right: 0
+            visibility: visible
+                
             &__container
                 flex-direction: row
                 justify-content: flex-end
                 margin-right: 0
+                align-items: center
+                height: auto
+                overflow-y: initial
+                padding-bottom: 0
+                margin-top: 0
+                li 
+                    &:first-child
+                        margin-top: 0
+                    &:last-child
+                        margin-right: 0
+                    a, button
+                        margin-right: 1.5em
+                        font-size: 14px
+                        font-weight: 400
+                    &.dropdown
+                        position: relative
+                        .dropdown__content
+                            position: absolute
+                            top: 70px
+                            transition: .5s
+                            border: 1px solid $muted
+                            border-top: none
+                            &.toggled
+                                background: white
+                                width: 250px
+                                padding: 10px
+                                a 
+                                    color: $primary
+                                    padding: 16px 0
+        &__cart
+            display: flex
+            align-items: center
+            justify-content: flex-end
+            .snipcart-total-price
+                display: block
+                font-family: Montserrat, sans-serif
+                font-weight: 400
+                font-size: 14px
+                opacity: 1
+                color: $light
+                margin-right: 1em
+                &:empty
+                    opacity: 0

@@ -1,36 +1,16 @@
 import React from "react"
 import Layout from "../layouts/index"
 import { Link, graphql } from 'gatsby'
+import ProductCardDeck from '../components/product-card-deck'
 
 const Products = ({ pageContext, data }) => {
   const { edges } = data.allDatoCmsProduct
   return (
     <Layout navBg={true}>
-        <div className="Wrap Main">
+        <div className="Wrap">
             <h1>{pageContext.category}</h1>
-            <div className="Catalogue">
-                {
-                    edges.map(({ node: product }) => (
-                        <div className="Catalogue__item" key={product.id}>
-                        <div
-                            className="Product"
-                        >
-                            <div className="Product__image">
-                                <img src={product.productImage.url} />
-                            </div> <div className="Product__details">
-                            <div className="Product__name">
-                                {product.productName}
-                                <div className="Product__price">
-                                €{product.productPrice}
-                                </div>
-                            </div>
-                            <Link to={`/${product.productCategory.category}/${product.productLink}`} >Learn More</Link>
-                            </div>
-                        </div>
-                        </div>
-                    ))
-                }
-            </div>
+            <ProductCardDeck products={edges} />
+
             <Link to="/shop">All Products</Link>
         </div> 
     </Layout>
@@ -53,6 +33,7 @@ export const pageQuery = graphql`
                 url
             }
             productLink
+            productDimensions
             productCategory{
                 category
             }

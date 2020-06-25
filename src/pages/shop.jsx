@@ -1,37 +1,38 @@
 import React from 'react';
 import Layout from "../layouts/index"
-import Img from 'gatsby-image'
-import { Link } from 'gatsby'
+import ProductCardDeck from '../components/product-card-deck'
+import SNIPCART_API_TOKEN from '../../.env'
 
-const Shop = ({ data }) => (
-  <Layout site={data.site} navBg={true}>
-    <div className="Wrap Main">
-      <div className="Catalogue">
-        {
-          data.products.edges.map(({ node: product }) => (
-            <div className="Catalogue__item" key={product.id}>
-              <div
-                className="Product"
-              >
-                <div className="Product__image">
-                  <Img sizes={product.productImage.sizes} />
-                </div> <div className="Product__details">
-                  <div className="Product__name">
-                    {product.productName}
-                    <div className="Product__price">
-                      €{product.productPrice}
-                    </div>
-                  </div>
-                  <Link to={`/${product.productCategory.category}/${product.productLink}`} >Learn More</Link>
-                </div>
-              </div>
-            </div>
-        ))
-      }
-      </div>
-    </div> 
-  </Layout>
-);
+const Shop = ({ data }) => {
+  const {edges} = data.products
+  const secret = SNIPCART_API_TOKEN
+  const checkOrders = async () => {
+    const request = await fetch('https://app.snipcart.com/api/orders', {
+        headers: {
+            'Authorization': `Basic ${btoa(secret)}`,
+            'Accept': 'application/json'
+        }
+    })
+
+    const result = await request.json()
+
+    console.log(result)
+
+  }
+
+
+  return(
+    <Layout navBg={true}>
+        <div className="Wrap">
+            <h1>Shop All Products</h1>
+            <ProductCardDeck products={edges} />
+
+            <button onClick={checkOrders}>Check Orders</button>
+        </div> 
+    </Layout>
+  )
+}
+  
 
 export default Shop
 
