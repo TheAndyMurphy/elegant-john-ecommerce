@@ -1,76 +1,76 @@
-.Product 
-  text-decoration: none
-  color: black
-  cursor: pointer
-  display: flex 
-  flex-direction: column
-  box-shadow: 0px 12px 16px 0px rgba(0,0,0,.1), 0px 4px 6px 0px rgba(0,0,0,.15)
-    
-  transition: .5s
-  border-radius: 5px
+.product
+    display: grid 
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr))
+    grid-row-gap: 72px
+    grid-column-gap: 72px
+    &__image
+        height: 400px
+        width: 100%
+        img 
+            height: 400px
+            width: 100%
+            object-fit: cover
+            object-position: center
+    &__details
+        display: flex
+        flex-direction: column
+    &__title
+        h1 
+            font-size: 36px
+            margin-bottom: 1em
+            letter-spacing: 1px
+            color: $primary
+    &__description
+        p 
+            font-size: 16px
+            letter-spacing: 1px
+            margin-bottom: 2em
+            color: $primary
+            line-height: 1.5em
+    &__dimensions
+        p 
+            font-size: 14px
+            letter-spacing: 1px
+            margin-bottom: 2em
+            color: $muted
+            line-height: 1.5em
+    &__price
+        color: $primary
+        margin-bottom: 72px
+        font-size: 24px
+        font-weight: 600
+        &:after
+            content: ' - (incl. VAT @ 23%)'
+            font-size: 14px
+            color: $muted
+            letter-spacing: 1px
+            font-weight: 400
+    &__buy
+        background: $primary
+        width: 200px
+        height: 50px
+        display: flex
+        align-items: center
+        justify-content: center
+        color: whitesmoke
+        border: none
+        border-radius: 5px
+        outline: none
+        font-size: 16px
+        font-family: Montserrat, sans-serif
+        letter-spacing: 1px
+        font-weight: 600
+        text-transform: uppercase
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,.25)
+        cursor: pointer
+        transition: .25s
+        &:hover
+            background: $muted
+            color: #fff
 
-
-
-  &__image 
-    border: none
-    border-top-left-radius: 5px
-    border-top-right-radius: 5px
-    transition: .5s
-    height: 220px
-    width: 100%
-    overflow: hidden
-    border-bottom: 1px solid #ddd
-
-  img 
-    object-fit: cover !important
-    height: 220px !important
-    width: 100%
-    object-position: center center
-
-  
-
-
-.Product:hover
-  transform: scale(1.03)
-  
-.Product__details 
-  display: flex
-  flex-direction: column
-  align-items: flex-start
-  padding: 1em
-  & > *
-    margin-bottom: 1em
-
-
-.Product__name 
-  font-weight: bold
-  padding-right: 20px
-  color: #555
-
-
-.Product__price 
-  font-size: 0.8em
-  font-weight: normal
-  color: #000
-
-
-.Product__buy 
-  flex: 1
-  text-align: center
-  width: 100%
-  text-transform: uppercase
-  background: transparent
-  padding: 1em
-  color: #777
-  position: relative
-  font-weight: bold
-  transition: .5s
-  border: 1px solid #777
-  border-radius: 5px
-
-
-  &:hover 
-    background: #777
-    color: #fff
-    
-  
+@include mobile-only
+    .product
+        &__image
+            height:  220px
+            img 
+                height: 220px

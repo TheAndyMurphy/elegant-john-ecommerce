@@ -22,6 +22,7 @@ exports.createPages = ({ graphql, actions }) => {
                 }
                 productLink
                 productDescription
+                productDimensions
                 productCategory {
                   category
                 }

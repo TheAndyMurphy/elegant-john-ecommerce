@@ -4,21 +4,6 @@ import ProductCardDeck from '../components/product-card-deck'
 
 const Shop = ({ data }) => {
   const {edges} = data.products
-  const secret = process.env.SNIPCART_API_TOKEN
-  const checkOrders = async () => {
-    const request = await fetch('https://app.snipcart.com/api/orders', {
-        headers: {
-            'Authorization': `Basic ${btoa(secret)}`,
-            'Accept': 'application/json'
-        }
-    })
-
-    const result = await request.json()
-
-    console.log(result)
-
-  }
-
 
   return(
     <Layout navBg={true}>
@@ -26,7 +11,6 @@ const Shop = ({ data }) => {
             <h1>Shop All Products</h1>
             <ProductCardDeck products={edges} />
 
-            <button onClick={checkOrders}>Check Orders</button>
         </div> 
     </Layout>
   )
